@@ -15,7 +15,7 @@ function getSeason(date) {
   let month;  
   if (!(date instanceof Date)) return 'Unable to determine the time of year!';
   if (date.length === 0) return 'Unable to determine the time of year!';
-  // if (date.getMonth() >= 13) return 'Invalid date!';
+  if (date.getMonth() >= 13) return 'Invalid date!';
   switch (date.getMonth()) {
     case 0:
     case 1:
@@ -37,6 +37,7 @@ function getSeason(date) {
     case 10:
       month = "autumn (fall)";             
   }
+  return month;  
  
 }
 
