@@ -19,7 +19,7 @@ const HALF_LIFE_PERIOD = 5730;
  */
 function dateSample(sampleActivity) {
   let num = Number(sampleActivity); 
-  if (Number.isNaN(num) || num <= 0 || Number.isInteger(sampleActivity) || typeof sampleActivity === "symbol")  {
+  if (Number.isNaN(num) || num <= 0 || num >= 15 || typeof sampleActivity !== "string" )  {
     return false;
   } else {
     let k = 0.693 / HALF_LIFE_PERIOD;
