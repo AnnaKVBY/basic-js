@@ -38,8 +38,9 @@ function getSeason(date) {
       month = "autumn (fall)";             
   }
   return month;  
- 
 }
+
+
 
 module.exports = {
   getSeason
