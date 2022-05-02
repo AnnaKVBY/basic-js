@@ -14,11 +14,15 @@ const { NotImplementedError } = require('../extensions/index.js');
  * 
  */
 function transform(arr) { 
+  throw new NotImplementedError('Not implemented');
   if (!(arr instanceof Array)) throw new Error ("'arr' parameter must be an instance of the Array!");
   if (arr.length === 0) return arr;
   let newArr = [...arr];
   for (let i=0; i < arr.length; i++){
-    if (arr[i] === `--discard-next` && arr[i] === arr.length-1) return newArr.splice(i, 1);
+    if (arr[i] === `--discard-next` && arr[i] === arr.length-1){
+      newArr.splice(i, 1);
+      return newArr;
+    }
     if (arr[i] === `--discard-next` && arr[i] === `--double-prev`) return newArr.splice(i, 3);
     if (arr[i] === `--discard-next`) return newArr.splice(i, 2);
     if (arr[i] === `--discard-prev` && arr[i] === arr[0]) return newArr.splice(1);
@@ -31,6 +35,7 @@ function transform(arr) {
   }
   return arr;
 }
+
 
 module.exports = {
   transform
