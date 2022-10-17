@@ -15,9 +15,38 @@ const { NotImplementedError } = require('../extensions/index.js');
  * => 'STRINGPLUS00PLUS00PLUS**STRINGPLUS00PLUS00PLUS**STRINGPLUS00PLUS00PLUS'
  *
  */
-function repeater(/* str, options */) {
-  throw new NotImplementedError('Not implemented');
-  // remove line with error and write your code here
+function repeater(str, options) {
+  // throw new NotImplementedError('Not implemented');
+  let result;
+  let arr = [];
+  if (options.hasOwnProperty('separator') === false && options.hasOwnProperty('addition') === false ) {   
+    result = Array(options['repeatTimes']).fill(str).join("+")
+  }
+  if (options.hasOwnProperty('separator') && options.hasOwnProperty('addition') === false) {   
+    result = Array(options['repeatTimes']).fill(str).join(options['separator'])
+  }
+  if (options.hasOwnProperty('addition') && options.hasOwnProperty('additionSeparator') === false) {   
+    result = Array(options['repeatTimes']).fill(str+options['addition']).join(options['separator'])
+  }
+  if (options.hasOwnProperty('addition') && options.hasOwnProperty('additionSeparator')) {       
+    let add = Array(options['additionRepeatTimes']).fill(options['addition']).join(options['additionSeparator'])
+    result = Array(options['repeatTimes']).fill(str+add).join(options['separator'])
+  }
+  if (options.hasOwnProperty('addition') && options.hasOwnProperty('separator') === false && options.hasOwnProperty('additionSeparator') === false) {   
+    let add = Array(options['additionRepeatTimes']).fill(options['addition']).join("|")
+    result = Array(options['repeatTimes']).fill(str+add).join("+")
+  }
+  if (options.hasOwnProperty('addition') && options.hasOwnProperty('separator') === false && options.hasOwnProperty('additionSeparator')) {   
+    let add = Array(options['additionRepeatTimes']).fill(options['addition']).join(options['additionSeparator'])
+    result = Array(options['repeatTimes']).fill(str+add).join("+")
+  }
+  if (options.hasOwnProperty('addition') && options.hasOwnProperty('additionSeparator') === false && options.hasOwnProperty('separator')) {   
+    let add = Array(options['additionRepeatTimes']).fill(options['addition']).join("|")
+    result = Array(options['repeatTimes']).fill(str+add).join(options['separator'])
+  }
+
+ return result
+ 
 }
 
 module.exports = {
