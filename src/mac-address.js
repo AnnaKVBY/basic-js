@@ -15,12 +15,14 @@ const { NotImplementedError } = require('../extensions/index.js');
  *
  */
 function isMAC48Address(n) {
-  let arr = n.split("-");
-  let result;
-  if (arr.length !== 6) return false;  
-
-
-  return result
+  let arr = n.split("-"); 
+ 
+  if (n.length !== 17) return false;  
+  for (let i=0; i<arr.length; i++) {    
+    if((arr[i][0] >= '0' && arr[i][0] <= '9' || arr[i][0] >= 'A' && arr[i][0] <= 'F') && (arr[i][1] >= '0' && arr[i][1] <= '9' || arr[i][1] >= 'A' && arr[i][1] <= 'F')) {
+      return true
+    } else {return false}
+  } 
  
 }
 module.exports = {
