@@ -22,7 +22,7 @@ function transform(arr) {
       newArr.splice(i, 1);
       return newArr;
     }    
-    if (arr[i] === `--discard-next`) {
+    if (arr[i] === `--discard-next` && arr[i] !== arr.length-1) {
       newArr.splice(i, 2);
       return newArr;
     } 
@@ -34,11 +34,11 @@ function transform(arr) {
       newArr.splice(i-1, 2);
       return newArr;
     }
-    if (arr[i] === `--double-next`  && arr[i] === arr.length-1) {
-      newArr.splice(0, arr.length-1);
+    if (arr[i] === `--double-next` && arr[i] === arr.length-1) {
+      newArr.splice(i, 1);
       return newArr;
     }
-    if (arr[i] === `--double-next`) {
+    if (arr[i] === `--double-next` && arr[i] < arr.length-1) {
       newArr.splice(i, 1, i+1) 
       return newArr
     }
@@ -52,6 +52,7 @@ function transform(arr) {
     }
   }
   return arr;
+
 }
 
 

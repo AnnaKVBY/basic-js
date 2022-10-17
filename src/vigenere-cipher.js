@@ -19,14 +19,40 @@ const { NotImplementedError } = require('../extensions/index.js');
  * reverseMachine.decrypt('AEIHQX SX DLLU!', 'alphonse') => '!NWAD TA KCATTA'
  * 
  */
+const alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+
 class VigenereCipheringMachine {
-  encrypt() {
-    throw new NotImplementedError('Not implemented');
-    // remove line with error and write your code here
+  constructor(isDirect = true) {
+    this._reverseFlag = !isDirect;
   }
-  decrypt() {
-    throw new NotImplementedError('Not implemented');
-    // remove line with error and write your code here
+  
+  encrypt(message, key) {
+    if (message === undefined || key === undefined) throw new Error (`Incorrect arguments!`);
+
+    let keuUpp = key.toUpperCase();
+    let keuUppClean = keuUpp.replace(/\s/g, '');
+    let messageUpp = message.toUpperCase();
+    let messageUppClean = messageUpp.trim();
+    let result = [];
+
+    for (let i=0, n=0; i< messageUppClean.length; i++, n++) {
+      let elem = messageUppClean[i];
+      if (!~alphabet.indexOf(elem)) {
+        result.push(elem);
+        n--;
+      }
+      let elemcode = elem.charCodeAt(0);
+
+
+
+
+    }
+   
+
+
+  }
+  decrypt(message, key) {
+   
   }
 }
 
